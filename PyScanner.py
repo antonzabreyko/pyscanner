@@ -8,17 +8,20 @@ class PyScanner():
     def next(self):
         k = None
         for i in range(len(self.string)):
-            if string[i] != self.separator:
+            if self.string[i] != self.separator:
                 k = i
                 break
 
         if self.string == "" and k == None:
             raise IndexError("index out of bounds")
-        elif self.string == "":
-            return self.string[k:]
 
-        for i in range(len(self.string)):
-            if (string[i] == self.separator):
-                partition = self.string[k:i]
-                self.string = self.string[i:]
-                return partition
+        g = len(self.string)
+
+        for i in range(k, len(self.string)):
+            if (self.string[i] == self.separator):
+                g = i
+                break
+
+        partition = self.string[k:g]
+        self.string = self.string[g:]
+        return partition
