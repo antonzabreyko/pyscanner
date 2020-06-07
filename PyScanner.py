@@ -25,3 +25,11 @@ class PyScanner():
         partition = self.string[k:g]
         self.string = self.string[g:]
         return partition
+
+    def hasNext(self):
+        while (self.string != ""):
+            current = self.string[0]
+            if current != self.separator:
+                return True
+            self.string = self.string[1:]
+        return False
