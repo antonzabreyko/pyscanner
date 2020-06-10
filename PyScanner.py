@@ -1,3 +1,4 @@
+import re
 class PyScanner():
 
     def __init__(self, string, separator=" "):
@@ -21,9 +22,14 @@ class PyScanner():
         return partition
 
     def hasNext(self):
-        while (self.string != ""):
-            current = self.string[0]
-            if current != self.separator:
-                return True
-            self.string = self.string[1:]
-        return False
+        return PyScanner.__hasNext__(self, "[^" + self.separator + "]")
+
+    def __hasNext__(self, param):
+        match = re.search(param, self.string)
+        if not match:
+            return False
+        self.string = self.string[match.span()[0]:]
+        return True
+
+    def hasNextInt(self):
+        return
