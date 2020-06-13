@@ -30,14 +30,37 @@ class PyScanner():
     def next(self):
         return self.__next__(self.separator)
 
+    ''' Returns whether or not there is a next string, closed off by the separator. '''
     def hasNext(self, index=False):
         results = PyScanner.__hasNext__(self, self.separator)
         return index and results or results[0]
 
+    ''' Returns whether or not there is a next int. '''
     def hasNextInt(self, index=False):
         regex = "[-]?[0-9]+"
-        results = self.__hasNext__(self.separator)
+        results = self.__hasNext__(regex)
         return index and results or results[0]
 
+    ''' Returns the next int, if it exists. '''
     def nextInt(self):
         return self.__next__("[-]?[0-9]+")
+
+    ''' Returns if there is a next double. '''
+    def hasNextDouble(self, index=False):
+        regex = "[-]?[0-9]+[.][0-9]+"
+        results = self.__hasNext__(regex)
+        return index and results or results[0]
+
+    ''' Returns the next double, if it exists. '''
+    def nextDouble(self, index=False):
+        regex = "[-]?[0-9]+[.][0-9]+"
+        return self.__next__(regex)
+
+    ''' Returns whether or not there is a next matching pattern. '''
+    def hasNext(self, pattern, index=False):
+        results = self.__hasNext__(pattern)
+        return index and results or results[0]
+
+    ''' Returns next partition matching pattern. '''
+    def next(self, pattern):
+        return self.__next__(pattern)
