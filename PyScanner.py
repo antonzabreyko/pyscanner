@@ -64,3 +64,9 @@ class PyScanner():
     ''' Returns next partition matching pattern. '''
     def next(self, pattern):
         return self.__next__(pattern)
+
+    def nextLine(self):
+        return self.__next__("[^\n]+")
+
+    def hasNextLine(self):
+        return self.string and True or False
