@@ -65,8 +65,10 @@ class PyScanner():
     def next(self, pattern):
         return self.__next__(pattern)
 
+    ''' Returns next line. '''
     def nextLine(self):
         return self.__next__("[^\n]+")
 
+    ''' Returns whether or not the string has another line. '''
     def hasNextLine(self):
         return self.string and True or False
