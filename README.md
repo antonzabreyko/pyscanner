@@ -16,12 +16,3 @@ from the user for easy implementation of other desired items.
 
 <h3> Acknowledgements </h3>
 Inspired by Java's scanners. Built with Python3's re library.
-
-`var examplerue`
-
-
-`scanner = PyScanner(str)`
-
-```
-asiufbaeuifhawui
-```
